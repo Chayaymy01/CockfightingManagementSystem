@@ -1,0 +1,297 @@
+/* สีหลักของหน้า */
+:root {
+    --color-green: #08752d;
+    --color-green-hover: #056526;
+    --color-text: #111827;
+    --color-white: #ffffff;
+}
+
+/* ค่าเริ่มต้น */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Kanit', Tahoma, sans-serif;
+    color: var(--color-text);
+    background-color: #a9d9f4;
+    background-image:
+        linear-gradient(rgba(230, 248, 255, 0.18), rgba(230, 248, 255, 0.18)),
+        url('../Newpw/Identity/Setnewpw/assets/rooster-meadow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* พื้นที่หลัก: การ์ดสมัครอยู่กึ่งกลางหน้าจอ */
+.signup-page {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 72px 20px 36px;
+    background: linear-gradient(90deg, rgba(234, 248, 255, 0.14), rgba(234, 248, 255, 0.32));
+}
+
+/* ปุ่มย้อนกลับ */
+.back-link {
+    position: absolute;
+    top: 34px;
+    left: 42px;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-white);
+    background: rgba(35, 57, 74, 0.9);
+    font-size: 25px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    background: rgba(18, 42, 58, 0.95);
+}
+
+/* กล่องข้อมูลสมาชิกและฟาร์ม */
+.impact-panel {
+    position: absolute;
+    bottom: 42px;
+    left: max(5vw, 42px);
+    width: min(330px, calc(100% - 40px));
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 16px 38px rgba(32, 70, 68, 0.2);
+    backdrop-filter: blur(9px);
+}
+
+.eyebrow {
+    margin: 0;
+    color: #0d6d32;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.eyebrow span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #f1c400;
+}
+
+.impact-panel h1 {
+    margin: 9px 0 18px;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.35;
+}
+
+.statistics {
+    display: flex;
+    gap: 12px;
+}
+
+.statistics div {
+    min-width: 108px;
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.74);
+}
+
+.statistics strong,
+.statistics small {
+    display: block;
+}
+
+.statistics strong {
+    font-size: 21px;
+}
+
+.statistics small {
+    color: #59626b;
+    font-size: 10px;
+}
+
+/* การ์ดสมัครสมาชิก */
+.signup-card {
+    width: min(100%, 470px);
+    padding: 42px 52px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    border-radius: 28px;
+    background: rgba(244, 250, 251, 0.73);
+    box-shadow: 0 22px 50px rgba(39, 78, 84, 0.22);
+    backdrop-filter: blur(13px);
+}
+
+.signup-card h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 32px;
+}
+
+/* ฟอร์มและช่องกรอก */
+.signup-card label {
+    display: block;
+    margin: 9px 0 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.signup-card input:not([type='checkbox']) {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    outline: 0;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font: 400 12px 'Kanit', sans-serif;
+}
+
+.signup-card input:focus {
+    border-color: #64b47a;
+    box-shadow: 0 0 0 3px rgba(6, 199, 85, 0.15);
+}
+
+/* ปุ่มเข้าสู่ระบบด้วย Google */
+.social-label {
+    margin: 16px 0 7px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-login {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.google-login {
+    border: 1px solid #dadce0;
+    color: #4285f4;
+    background: var(--color-white);
+    box-shadow: 0 4px 8px rgba(60, 64, 67, 0.18);
+}
+
+.google-login span {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.google-login:hover {
+    background: #f8faff;
+}
+
+/* ข้อตกลงและปุ่มสมัคร */
+.terms {
+    display: flex !important;
+    gap: 6px;
+    align-items: flex-start;
+    margin: 15px 0 !important;
+    font-size: 9px !important;
+    font-weight: 400 !important;
+    line-height: 1.45;
+}
+
+.terms input {
+    margin-top: 2px;
+    accent-color: var(--color-green);
+}
+
+.terms a,
+.login-link a {
+    color: var(--color-green);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--color-white);
+    background: var(--color-green);
+    font: 600 13px 'Kanit', sans-serif;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: var(--color-green-hover);
+}
+
+.submit-button span {
+    margin-left: 7px;
+    font-size: 16px;
+}
+
+.login-link {
+    margin: 13px 0 0;
+    text-align: center;
+    font-size: 11px;
+}
+
+/* ข้อความแจ้งเตือน */
+.alert {
+    margin: 0 0 12px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.alert.error {
+    border: 1px solid #f3bab5;
+    color: #a3281e;
+    background: rgba(255, 235, 233, 0.9);
+}
+
+/* หน้าจอขนาดกลางและมือถือ */
+@media (max-width: 850px) {
+    .signup-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 26px;
+    }
+
+    .impact-panel {
+        position: static;
+        order: 2;
+    }
+
+    .back-link {
+        top: 18px;
+        left: 20px;
+    }
+}
+
+@media (max-width: 460px) {
+    .signup-card {
+        padding: 34px 22px 24px;
+    }
+
+    .statistics div {
+        flex: 1;
+        min-width: 0;
+    }
+}
