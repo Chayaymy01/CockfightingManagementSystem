@@ -1,0 +1,642 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
+}
+
+/* =========================
+   Page Background
+========================= */
+.login-page {
+    min-height: 100vh;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.20),
+        rgba(255, 255, 255, 0.20)
+    ), url("../images/main.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================
+   Back Button
+========================= */
+.back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: #474545;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    z-index: 80;
+}
+
+/* =========================
+   Card
+========================= */
+.login-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 30px 50px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   Form Label
+========================= */
+.login-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #474545;
+    margin-bottom: 6px;
+}
+
+/* =========================
+   Input Group
+========================= */
+.input-group {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.input-group:focus-within {
+    border-color: #313131;
+    box-shadow:
+        0 0 0 1px rgba(142, 142, 142, 0.8),
+        0 1px 5px rgba(66, 66, 66, 0.18);
+}
+
+.input-group.error {
+    border-color: #c20000;
+    box-shadow: 0 0 0 1px rgba(194, 0, 0, 0.55);
+}
+
+.input-group.success {
+    border-color: #A5C752;
+    box-shadow: 0 0 0 1px rgba(132, 159, 64, 0.7);
+}
+
+/* =========================
+   Input Icon
+========================= */
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 17px;
+}
+
+/* =========================
+   Input
+========================= */
+.login-input {
+    width: 100%;
+    height: 44px;
+    border: none;
+    background: transparent;
+    padding: 0 48px 0 42px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* ซ่อนดวงตา default ของ Microsoft Edge / Internet Explorer */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* ซ่อนปุ่ม password auto-fill บาง browser */
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-caps-lock-indicator {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+}
+
+/* =========================
+   Eye Icon
+========================= */
+.eye-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .2s;
+    z-index: 5;
+}
+
+.eye-icon:hover {
+    color: #111827;
+}
+
+/* =========================
+   Help / Error Text
+========================= */
+.input-help {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #6b7280;
+    padding-left: 6px;
+}
+
+.input-error {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #dc2626;
+    padding-left: 6px;
+    min-height: 18px;
+}
+
+/* =========================
+   Password Rules
+========================= */
+.password-rules {
+    margin: 14px 0 18px;
+    padding: 14px 16px;
+    
+}
+
+.password-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.password-rule:last-child {
+    margin-bottom: 0;
+}
+
+.password-rule i {
+    font-size: 16px;
+    color: #838383;
+    transition: .3s;
+}
+
+.password-rule.valid {
+    color: #16a34a;
+    font-weight: 600;
+    animation: checkAnimation .3s ease;
+}
+
+.password-rule.valid i {
+    color: #16a34a;
+    transform: scale(1.15);
+}
+
+@keyframes checkAnimation {
+    0% {
+        transform: scale(.95);
+        opacity: .7;
+    }
+
+    60% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   Submit Button
+========================= */
+.login-submit-btn {
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+    background: #1c1b1b;
+    color: white;
+    font-weight: 600;
+    padding: 10px 0;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.login-submit-btn:hover {
+    background: #474545;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.login-submit-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.login-submit-btn.loading {
+    opacity: 0.75;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* =========================
+   Loading Spinner
+========================= */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin .8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   Terms
+========================= */
+.terms-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.terms-row input {
+    margin-top: 4px;
+}
+
+.terms-text {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.terms-link {
+    border: none;
+    background: transparent;
+    color: #047857;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Policy Modal
+========================= */
+.policy-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.policy-modal.show {
+    display: flex;
+}
+
+.policy-box {
+    width: 100%;
+    max-width: 520px;
+    max-height: 80vh;
+    background: #ffffff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    animation: modalPop .25s ease;
+}
+
+.policy-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.policy-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.policy-close {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.policy-close:hover {
+    background: #e5e7eb;
+}
+
+.policy-content {
+    padding: 20px 24px;
+    overflow-y: auto;
+    max-height: 52vh;
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+.policy-content h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.policy-content ul {
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.policy-footer {
+    padding: 16px 24px 22px;
+    border-top: 1px solid #e5e7eb;
+    text-align: right;
+}
+
+.policy-accept {
+    border: none;
+    background: #1f2937;
+    color: white;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.policy-accept:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media(max-width: 640px) {
+    .login-card {
+        padding: 24px;
+        border-radius: 36px;
+    }
+
+    .login-submit-btn {
+        width: 100%;
+    }
+
+    .policy-box {
+        border-radius: 22px;
+    }
+}
+/* =========================
+   Success Modal
+========================= */
+.success-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.success-modal.show {
+    display: flex;
+}
+
+.success-box {
+    width: 100%;
+    max-width: 380px;
+    background: white;
+    border-radius: 28px;
+    padding: 34px 28px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    animation: successPop .25s ease;
+}
+
+.success-icon {
+    font-size: 64px;
+    color: #16a34a;
+    margin-bottom: 14px;
+}
+
+.success-box h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.success-btn {
+    width: 100%;
+    border: none;
+    background: #1f2937;
+    color: white;
+    font-weight: 600;
+    padding: 12px 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.success-btn:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+@keyframes successPop {
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   Map Button
+========================= */
+.map-btn {
+    margin-top: 8px;
+    border: none;
+    background: rgba(4, 120, 87, 0.10);
+    color: #047857;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.map-btn:hover {
+    background: rgba(4, 120, 87, 0.16);
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Map Modal
+========================= */
+.map-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1200;
+}
+
+.map-modal.show {
+    display: flex;
+}
+
+.map-box {
+    width: 100%;
+    max-width: 720px;
+    background: #ffffff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    animation: modalPop .25s ease;
+}
+
+.map-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.map-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.map-close {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+    cursor: pointer;
+}
+
+.map-close:hover {
+    background: #e5e7eb;
+}
+
+#map {
+    width: 100%;
+    height: 380px;
+}
+
+.map-footer {
+    padding: 16px 20px 22px;
+}
+
+#selected-location-text {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.map-use-btn {
+    width: 100%;
+    border: none;
+    background: #1f2937;
+    color: white;
+    font-weight: 700;
+    padding: 12px 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.map-use-btn:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+@media(max-width: 640px) {
+    #map {
+        height: 320px;
+    }
+
+    .map-box {
+        border-radius: 22px;
+    }
+}
+
+

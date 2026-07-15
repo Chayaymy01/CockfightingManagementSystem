@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Kanit', sans-serif;
+    /* ใส่ URL รูปไก่ของคุณที่นี่ */
+    background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
+    background-size: cover;
+}
+
+.otp-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 40px;
+    border-radius: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 { margin-top: 0; color: #000; font-weight: 500; }
+p { color: #666; font-size: 0.9rem; line-height: 1.5; }
+.phone { color: #000; font-weight: bold; }
+.change-num { color: #28a745; text-decoration: none; margin-left: 5px; }
+
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.otp-field {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #f0f0f0;
+    text-align: center;
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.timer { color: #999; font-size: 0.8rem; margin-bottom: 30px; }
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-back { background: #e0e0e0; color: #555; }
+.btn-confirm { background: #ffcc00; color: #000; }
+.btn-confirm:hover { background: #e6b800; }

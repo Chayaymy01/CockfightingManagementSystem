@@ -1,0 +1,464 @@
+/* =========================
+   Global Reveal Animation
+========================= */
+:root {
+    --sk-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --sk-motion-fast: 180ms;
+    --sk-motion-normal: 320ms;
+    --sk-motion-slow: 720ms;
+    --sk-focus-glow: 0 0 0 4px rgba(16, 185, 129, 0.14);
+    --sk-card-shadow: 0 18px 42px rgba(15, 23, 42, 0.14);
+}
+
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+    opacity: 0;
+    transition:
+        opacity var(--sk-motion-slow) var(--sk-motion-ease),
+        transform var(--sk-motion-slow) var(--sk-motion-ease),
+        filter var(--sk-motion-slow) var(--sk-motion-ease);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.reveal { transform: translateY(36px); }
+.reveal-left { transform: translateX(-42px); }
+.reveal-right { transform: translateX(42px); }
+.reveal-scale { transform: translateY(22px) scale(0.96); }
+
+.reveal.show,
+.reveal-left.show,
+.reveal-right.show,
+.reveal-scale.show {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: none;
+}
+
+.stagger-item { transition-delay: calc(var(--stagger-index, 0) * 72ms); }
+
+/* =========================
+   Page Micro-interactions
+========================= */
+.login-card,
+.dashboard-shell,
+.dashboard-card,
+.market-card,
+.profile-card,
+.otp-card,
+.reset-card,
+.forgotpw-container,
+.upload-box,
+.search-card,
+.farm-card,
+.chicken-card {
+    transition:
+        transform var(--sk-motion-normal) var(--sk-motion-ease),
+        box-shadow var(--sk-motion-normal) var(--sk-motion-ease),
+        border-color var(--sk-motion-normal) var(--sk-motion-ease),
+        background-color var(--sk-motion-normal) var(--sk-motion-ease);
+}
+
+.login-card:hover,
+.dashboard-card:hover,
+.market-card:hover,
+.profile-card:hover,
+.otp-card:hover,
+.reset-card:hover,
+.forgotpw-container:hover,
+.upload-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sk-card-shadow);
+}
+
+button,
+.btn,
+.btn-login,
+.login-submit-btn,
+.success-btn,
+.skip-btn,
+.farm-btn,
+.detail-btn,
+.buy-link-btn,
+.view-all-link,
+.terms-link,
+.policy-accept,
+.policy-close,
+.back-btn,
+.skip-top-link {
+    transition:
+        transform var(--sk-motion-fast) var(--sk-motion-ease),
+        box-shadow var(--sk-motion-fast) var(--sk-motion-ease),
+        background-color var(--sk-motion-fast) ease,
+        color var(--sk-motion-fast) ease,
+        opacity var(--sk-motion-fast) ease;
+}
+
+button:hover,
+.btn:hover,
+.btn-login:hover,
+.login-submit-btn:hover,
+.success-btn:hover,
+.skip-btn:hover,
+.farm-btn:hover,
+.detail-btn:hover,
+.buy-link-btn:hover,
+.view-all-link:hover,
+.policy-accept:hover,
+.back-btn:hover,
+.skip-top-link:hover {
+    transform: translateY(-2px);
+}
+
+button:active,
+.btn:active,
+.login-submit-btn:active,
+.success-btn:active,
+.skip-btn:active,
+.farm-btn:active,
+.detail-btn:active,
+.buy-link-btn:active,
+.back-btn:active,
+.skip-top-link:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.input-group,
+.login-input,
+.otp-input,
+.otp-field,
+input,
+textarea,
+select {
+    transition:
+        transform var(--sk-motion-fast) var(--sk-motion-ease),
+        box-shadow var(--sk-motion-fast) var(--sk-motion-ease),
+        border-color var(--sk-motion-fast) ease,
+        background-color var(--sk-motion-fast) ease;
+}
+
+.input-group:focus-within {
+    transform: translateY(-1px);
+    box-shadow: var(--sk-focus-glow);
+}
+
+.login-input:focus,
+.otp-input:focus,
+.otp-field:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: var(--sk-focus-glow);
+}
+
+.input-icon,
+.eye-icon,
+.upload-label i,
+.policy-close i,
+.back-btn i,
+.back-btn svg,
+.farm-success-icon,
+.success-icon,
+.modal-icon {
+    /* Icons should keep their original position; only color can ease if page CSS changes it. */
+    transition: color var(--sk-motion-fast) ease;
+}
+
+img,
+.image-preview,
+.farm-logo,
+.chicken-img,
+.about-modal-image {
+    transition: transform 520ms var(--sk-motion-ease), filter 520ms var(--sk-motion-ease);
+}
+
+.upload-box:hover .image-preview,
+.farm-card:hover .farm-logo,
+.chicken-card:hover .chicken-img,
+.about-modal-image:hover {
+    transform: scale(1.035);
+}
+
+.login-submit-btn.loading,
+#register-btn.loading,
+#save-farm-btn.loading {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(16, 185, 129, 0.22);
+}
+
+/* =========================
+   Modal Animation
+========================= */
+.policy-modal,
+.success-modal,
+.farm-success-modal,
+.modal,
+.about-modal-overlay {
+    transition: opacity var(--sk-motion-normal) ease, visibility var(--sk-motion-normal) ease;
+}
+
+.policy-box,
+.success-box,
+.farm-success-box,
+.modal-box,
+.about-modal-box {
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+    transition:
+        opacity var(--sk-motion-normal) ease,
+        transform var(--sk-motion-normal) var(--sk-motion-ease),
+        box-shadow var(--sk-motion-normal) var(--sk-motion-ease);
+    will-change: opacity, transform;
+}
+
+.policy-modal.show .policy-box,
+.success-modal.show .success-box,
+.farm-success-modal.show .farm-success-box,
+.modal.active .modal-box,
+.about-modal-overlay.show .about-modal-box {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* =========================
+   Dashboard Motion Skin
+========================= */
+.dashboard-page {
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Prompt", "Noto Sans Thai", sans-serif;
+    color: #17261d;
+    background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 34%),
+        linear-gradient(135deg, #f7fbf7 0%, #eef7ef 48%, #f8fafc 100%);
+}
+
+.dashboard-shell {
+    width: min(1080px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0;
+}
+
+.dashboard-hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 18px;
+}
+
+.dashboard-card {
+    border: 1px solid rgba(15, 118, 110, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
+    padding: 24px;
+}
+
+.dashboard-title {
+    margin: 0 0 10px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.1;
+}
+
+.dashboard-copy {
+    margin: 0;
+    color: #647067;
+    line-height: 1.8;
+}
+
+.dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.dashboard-action,
+.dashboard-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.dashboard-action {
+    color: #ffffff;
+    background: linear-gradient(135deg, #16a34a, #059669);
+    box-shadow: 0 12px 24px rgba(22, 163, 74, 0.22);
+}
+
+.dashboard-logout {
+    color: #166534;
+    background: #ecfdf5;
+}
+
+.dashboard-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dashboard-stat strong {
+    font-size: 2.6rem;
+    color: #047857;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.dashboard-mini-title {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.dashboard-mini-copy {
+    margin: 0;
+    color: #647067;
+    line-height: 1.7;
+}
+
+/* =========================
+   Background Alignment
+========================= */
+body.login-page,
+body:has(.forgotpw-container) {
+    background-color: #080808;
+    background-image:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.78)),
+        url("../images/main.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.dashboard-page {
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 30%),
+        linear-gradient(135deg, #050505 0%, #111111 52%, #1c1b1b 100%);
+}
+
+@media (max-width: 760px) {
+    body.login-page,
+    body:has(.forgotpw-container) {
+        background-attachment: scroll;
+    }
+}
+
+/* =========================
+   Responsive & Performance
+========================= */
+@media (max-width: 760px) {
+    .reveal { transform: translateY(22px); }
+    .reveal-left,
+    .reveal-right { transform: translateY(22px); }
+    .reveal-scale { transform: translateY(16px) scale(0.98); }
+    .stagger-item { transition-delay: calc(var(--stagger-index, 0) * 42ms); }
+
+    .login-card:hover,
+    .dashboard-card:hover,
+    .market-card:hover,
+    .profile-card:hover,
+    .otp-card:hover,
+    .reset-card:hover,
+    .forgotpw-container:hover,
+    .upload-box:hover {
+        transform: none;
+    }
+
+    .dashboard-shell { padding: 32px 0; }
+    .dashboard-hero,
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .dashboard-card { border-radius: 14px; padding: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
+
+
+/* =========================
+   Requested Non-home Overrides
+   แก้ตามคำขอ: หน้าอื่นไม่เล่น animation ตอนเปิดหน้า และ input focus เป็นสีเทาอ่อน 2px
+========================= */
+body:not(.home-page) .reveal,
+body:not(.home-page) .reveal-left,
+body:not(.home-page) .reveal-right,
+body:not(.home-page) .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    transition-delay: 0ms !important;
+    will-change: auto !important;
+}
+
+body:not(.home-page) .policy-box,
+body:not(.home-page) .success-box,
+body:not(.home-page) .farm-success-box,
+body:not(.home-page) .modal-box,
+body:not(.home-page) .about-modal-box {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+}
+
+body:not(.home-page) .login-card,
+body:not(.home-page) .dashboard-shell,
+body:not(.home-page) .dashboard-card,
+body:not(.home-page) .market-card,
+body:not(.home-page) .profile-card,
+body:not(.home-page) .otp-card,
+body:not(.home-page) .reset-card,
+body:not(.home-page) .forgotpw-container,
+body:not(.home-page) .upload-box {
+    animation: none !important;
+}
+
+body:not(.home-page) .input-group:focus-within {
+    transform: none !important;
+    border-color: #d1d5db !important;
+    box-shadow: 0 0 0 2px rgba(209, 213, 219, 0.72) !important;
+}
+
+body:not(.home-page) input:focus,
+body:not(.home-page) textarea:focus,
+body:not(.home-page) select:focus,
+body:not(.home-page) .login-input:focus,
+body:not(.home-page) .otp-input:focus,
+body:not(.home-page) .otp-field:focus {
+    outline: none !important;
+    border-color: #d1d5db !important;
+    box-shadow: 0 0 0 2px rgba(209, 213, 219, 0.72) !important;
+}

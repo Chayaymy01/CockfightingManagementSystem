@@ -1,0 +1,63 @@
+/* จัดการให้ container1 เป็นหน้ากากม่านดำลอยทับเต็มจอ */
+.container1 {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.6) !important; /* พื้นหลังมืดลง 60% */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important; /* อยู่เหนือทุกอย่างบนจอ */
+}
+
+/* ล็อกโครงกล่อง OTP ป็อปอัป */
+.otp-card {
+    background: #ffffff !important;
+    padding: 40px 30px !important;
+    border-radius: 40px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3) !important;
+    box-sizing: border-box !important;
+}
+
+/* บังคับช่องกรอก OTP ให้เป็นวงกลม ไม่ยืดพังยาวเป็นแถบ */
+.otp-inputs {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+    margin: 30px 0 !important;
+}
+
+.otp-field {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    border: 1px solid #ddd !important;
+    background: #f0f0f0 !important;
+    text-align: center !important;
+    font-size: 1.5rem !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+}
+
+.btn-group {
+    display: flex !important;
+    gap: 15px !important;
+}
+
+.btn-group .btn {
+    flex: 1 !important;
+    padding: 12px 0 !important;
+    border-radius: 20px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.btn-group .btn-back { background-color: #d1d5db !important; color: #1f2937 !important; }
+.btn-group .btn-confirm { background-color: #ffcc00 !important; color: #000000 !important; }

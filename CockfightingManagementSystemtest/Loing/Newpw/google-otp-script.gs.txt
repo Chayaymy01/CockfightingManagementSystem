@@ -1,0 +1,73 @@
+/**
+ * วางโค้ดนี้ใน Google Apps Script แล้วตั้ง Script Property:
+ * ชื่อ OTP_API_SECRET
+ * ค่าให้ตรงกับ GOOGLE_OTP_API_SECRET ใน config.php
+ */
+function doGet() {
+  return jsonResponse({
+    success: true,
+    status: 'ready',
+    message: 'Super Kaichon OTP service is ready'
+  });
+}
+
+// เลือกฟังก์ชันนี้แล้วกด Run หนึ่งครั้ง เพื่ออนุญาตสิทธิ์ส่งอีเมลให้สคริปต์
+function authorizeMail() {
+  return MailApp.getRemainingDailyQuota();
+}
+
+function doPost(e) {
+  try {
+    const data = JSON.parse((e.postData && e.postData.contents) || '{}');
+    const expectedSecret = PropertiesService.getScriptProperties().getProperty('OTP_API_SECRET');
+
+    if (!expectedSecret || data.secret !== expectedSecret) {
+      return jsonResponse({ success: false, status: 'error', message: 'Unauthorized' });
+    }
+
+    const email = String(data.to || '').trim();
+    const otp = String(data.otp || '').trim();
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return jsonResponse({ success: false, status: 'error', message: 'Invalid email' });
+    }
+
+    if (!/^\d{6}$/.test(otp)) {
+      return jsonResponse({ success: false, status: 'error', message: 'Invalid OTP' });
+    }
+
+    if (MailApp.getRemainingDailyQuota() < 1) {
+      return jsonResponse({ success: false, status: 'error', message: 'Daily email quota exceeded' });
+    }
+
+    const subject = 'รหัส OTP สำหรับตั้งรหัสผ่านใหม่ - Super Kaichon';
+    const plainBody = 'รหัส OTP ของคุณคือ ' + otp + '\nรหัสนี้มีอายุ 5 นาที\nหากคุณไม่ได้ทำรายการนี้ กรุณาไม่ต้องดำเนินการใด ๆ';
+    const htmlBody = `
+      <div style="font-family:Arial,sans-serif;max-width:520px;margin:auto;padding:24px;border:1px solid #e5e7eb;border-radius:16px">
+        <h2 style="color:#047857;margin-top:0">Super Kaichon</h2>
+        <p>รหัส OTP สำหรับตั้งรหัสผ่านใหม่ของคุณคือ</p>
+        <div style="font-size:32px;font-weight:700;letter-spacing:8px;text-align:center;padding:18px;background:#f0fdf4;border-radius:12px;color:#166534">${otp}</div>
+        <p>รหัสนี้มีอายุ <strong>5 นาที</strong></p>
+        <p style="color:#6b7280;font-size:13px">หากคุณไม่ได้ทำรายการนี้ กรุณาไม่ต้องดำเนินการใด ๆ</p>
+      </div>`;
+
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      body: plainBody,
+      htmlBody: htmlBody,
+      name: 'Super Kaichon'
+    });
+
+    return jsonResponse({ success: true, status: 'success', message: 'OTP sent' });
+  } catch (error) {
+    console.error(error);
+    return jsonResponse({ success: false, status: 'error', message: String(error.message || error) });
+  }
+}
+
+function jsonResponse(data) {
+  return ContentService
+    .createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}

@@ -1,0 +1,640 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', 'Noto Sans Thai', sans-serif;
+}
+
+/* =========================
+   Page Background
+========================= */
+.login-page {
+    min-height: 100vh;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.20),
+        rgba(255, 255, 255, 0.20)
+    ), url("../images/main.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* =========================
+   Skip Top Link
+========================= */
+.skip-top-link {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 9px 16px;
+    border-radius: 999px;
+
+    background: rgba(31, 41, 55, 0.88);
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    transition: .25s;
+}
+
+.skip-top-link:hover {
+    background: #111827;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   Card
+========================= */
+.login-card {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    border-radius: 46px;
+    padding: 34px 50px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   Form Label
+========================= */
+.login-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+/* =========================
+   Input Group
+========================= */
+.input-group {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    transition: .25s;
+}
+
+.input-group:focus-within {
+    border-color: #6b7280;
+    box-shadow:
+        0 0 0 1px rgba(107, 114, 128, 0.45),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.input-group.error {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.45);
+}
+
+.input-group.success {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.45);
+}
+
+/* =========================
+   Icons / Inputs
+========================= */
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 17px;
+}
+
+.login-input {
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 16px 0 42px;
+    font-size: 14px;
+    color: #111827;
+}
+
+.login-input::placeholder {
+    color: #9ca3af;
+}
+
+.login-select {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 38px;
+}
+
+.bank-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* =========================
+   Textarea
+========================= */
+.textarea-group {
+    min-height: 100px;
+}
+
+.textarea-icon {
+    top: 18px;
+    transform: none;
+}
+
+.farm-textarea {
+    height: 100px;
+    resize: none;
+    padding-top: 13px;
+    line-height: 1.6;
+}
+
+/* =========================
+   Error Text
+========================= */
+.input-error {
+    margin-top: 6px;
+    min-height: 18px;
+    padding-left: 6px;
+
+    font-size: 12px;
+    color: #dc2626;
+}
+
+.form-error {
+    min-height: 20px;
+    margin: 4px 0 8px;
+    color: #b91c1c;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* =========================
+   Address + Map Button
+========================= */
+.address-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.address-label-row .login-label {
+    margin-bottom: 0;
+}
+
+.map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    border: none;
+    background: rgba(4, 120, 87, 0.10);
+    color: #047857;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    cursor: pointer;
+    white-space: nowrap;
+    transition: .25s;
+}
+
+.map-btn:hover {
+    background: rgba(4, 120, 87, 0.16);
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Upload Section
+========================= */
+.upload-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0 22px;
+}
+
+.upload-box {
+    width: 100%;
+}
+
+.upload-label {
+    min-height: 128px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 18px 14px;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.62);
+    color: #4b5563;
+
+    text-align: center;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.upload-label:hover {
+    border-color: #047857;
+    background: rgba(4, 120, 87, 0.07);
+    transform: translateY(-2px);
+}
+
+.upload-label i {
+    font-size: 30px;
+    color: #047857;
+}
+
+.upload-label span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.upload-label small {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.image-preview {
+    display: none;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ถ้า JS ใส่ class show ให้ preview */
+.image-preview.show {
+    display: block;
+}
+
+/* =========================
+   Action Buttons
+========================= */
+.farm-action-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.skip-btn {
+    width: 42%;
+    border: none;
+    background: #f3f4f6;
+    color: #374151;
+
+    font-weight: 700;
+    padding: 11px 0;
+
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.skip-btn:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.login-submit-btn {
+    width: 58%;
+    border: none;
+    background: #1f2937;
+    color: white;
+
+    font-weight: 700;
+    padding: 11px 0;
+
+    border-radius: 999px;
+    cursor: pointer;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    transition: .25s;
+}
+
+.login-submit-btn:hover {
+    background: #374151;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.login-submit-btn:active,
+.skip-btn:active {
+    transform: translateY(0);
+}
+
+/* Loading */
+.login-submit-btn.loading {
+    opacity: 0.75;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin .8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================
+   Map Modal
+========================= */
+.map-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 1200;
+}
+
+.map-modal.show {
+    display: flex;
+}
+
+.map-box {
+    width: 100%;
+    max-width: 720px;
+
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    animation: modalPop .25s ease;
+}
+
+.map-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.map-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.map-close {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #f3f4f6;
+    color: #374151;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.map-close:hover {
+    background: #e5e7eb;
+}
+
+#map {
+    width: 100%;
+    height: 380px;
+}
+
+.map-footer {
+    padding: 16px 20px 22px;
+}
+
+#selected-location-text {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.map-use-btn {
+    width: 100%;
+    border: none;
+
+    background: #1f2937;
+    color: white;
+
+    font-weight: 700;
+    padding: 12px 0;
+
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.map-use-btn:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Success Modal
+========================= */
+.farm-success-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 1300;
+}
+
+.farm-success-modal.show {
+    display: flex;
+}
+
+.farm-success-box {
+    width: 100%;
+    max-width: 390px;
+
+    background: white;
+    border-radius: 28px;
+
+    padding: 34px 28px;
+    text-align: center;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+    animation: successPop .25s ease;
+}
+
+.farm-success-icon {
+    font-size: 64px;
+    color: #16a34a;
+    margin-bottom: 14px;
+}
+
+.farm-success-box h2 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.farm-success-box p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.success-btn {
+    width: 100%;
+    border: none;
+
+    background: #1f2937;
+    color: white;
+
+    font-weight: 700;
+    padding: 12px 0;
+
+    border-radius: 999px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.success-btn:hover {
+    background: #374151;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes successPop {
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media(max-width: 640px) {
+    .login-card {
+        padding: 26px 24px;
+        border-radius: 34px;
+    }
+
+    .skip-top-link {
+        top: 18px;
+        right: 18px;
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .upload-section {
+        grid-template-columns: 1fr;
+    }
+
+    .bank-fields {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .farm-action-row {
+        flex-direction: column-reverse;
+    }
+
+    .skip-btn,
+    .login-submit-btn {
+        width: 100%;
+    }
+
+    .address-label-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .map-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #map {
+        height: 320px;
+    }
+
+    .map-box,
+    .farm-success-box {
+        border-radius: 22px;
+    }
+}
+
+.optional-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b7280;
+}
