@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>รายการประกาศขายของฉัน - Super Kaichon</title>
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Orbitron:wght@400..900&family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+<link rel="stylesheet" href="./self-market.css">
+<link rel="stylesheet" href="../../shared/css/ui-motion.css">
+</head>
+
+<body>
+    <!-- =========================
+         Navbar เดิมของเว็บไซต์
+    ========================== -->
+    <header class="main-header">
+        <nav class="main-nav">
+<a href="../../index.html" class="logo">
+                <span>SUPER KAICHON</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li>
+                    <a href="../market/Marketplace.html">
+                        ตลาดไก่ชน
+                    </a>
+                </li>
+                <li>
+                    <a href="Farm.html">
+                        ฟาร์มไก่ชน
+                    </a>
+                </li>
+                <li>
+                    <a href="Favorite.html">
+                        รายการโปรด
+                    </a>
+                </li>
+                <li>
+<a href="../../dashboard/main/Dashboard.html">
+                        ฟาร์มของฉัน
+                    </a>
+                </li>
+                <li>
+                    <a href="self-market.html" class="active">
+                        รายการประกาศขาย
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <button
+                    class="icon-btn notification-btn"
+                    type="button"
+                    aria-label="รถเข็น"
+                >
+                    <i class="bi bi-cart2"></i>
+                    <span class="notification-badge" id="cart-count">1</span>
+                </button>
+
+                <button
+                    class="icon-btn notification-btn"
+                    type="button"
+                    aria-label="แชต"
+                >
+                    <i class="bi bi-chat-dots"></i>
+                    <span class="notification-badge">5</span>
+                </button>
+
+                <button
+                    class="icon-btn notification-btn"
+                    type="button"
+                    aria-label="การแจ้งเตือน"
+                >
+                    <i class="bi bi-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+
+                <button
+                    class="user-profile"
+                    id="profile-button"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    <span class="user-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+
+                    <span class="user-info">
+                        <strong>กฤษณะ</strong>
+                        <small>สมาชิก</small>
+                    </span>
+
+                    <i class="bi bi-chevron-down profile-arrow"></i>
+                </button>
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="เปิดเมนู"
+                >
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+
+            <!-- Profile Dropdown เดิม -->
+            <div class="profile-dropdown" id="profile-dropdown">
+<a href="../../dashboard/main/Dashboard.html">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard
+                </a>
+
+                <a href="Farm.html">
+                    <i class="bi bi-house-heart"></i>
+                    ฟาร์มของฉัน
+                </a>
+
+                <a href="self-market.html">
+                    <i class="bi bi-tags"></i>
+                    รายการประกาศขาย
+                </a>
+
+                <a href="Orders.html">
+                    <i class="bi bi-bag-check"></i>
+                    รายการสั่งซื้อ
+                </a>
+
+                <a href="Settings.html">
+                    <i class="bi bi-gear"></i>
+                    ตั้งค่า
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+<a href="../../Loing/logout.php" class="logout-link">
+                    <i class="bi bi-box-arrow-right"></i>
+                    ออกจากระบบ
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="owner-market-main">
+        <!-- =========================
+             ส่วนหัวของหน้า
+        ========================== -->
+        <section class="owner-hero reveal page-enter">
+            <div class="owner-hero-overlay"></div>
+
+            <div class="owner-hero-content">
+                <span class="hero-eyebrow">
+                    Dashboard ผู้ขาย
+                </span>
+
+                <h1>
+                    รายการประกาศขายของฉัน
+                </h1>
+
+                <p>
+                    จัดการไก่ชนที่คุณลงประกาศขาย ตรวจสอบสถานะ และแก้ไขข้อมูลประกาศ
+                </p>
+            </div>
+
+            <a href="create-listing.html" class="create-listing-btn">
+                <i class="bi bi-plus-lg"></i>
+                ลงขายไก่
+            </a>
+        </section>
+
+        <!-- =========================
+             การ์ดสรุปสถานะ
+        ========================== -->
+        <div class="sr-only" id="owner-market-load-status" role="status" aria-live="polite"></div>
+
+        <section class="listing-summary-grid owner-summary-skeleton-grid" id="owner-summary-loading" aria-hidden="true" hidden>
+            <div class="summary-card summary-card-skeleton">
+                <div class="skeleton skeleton-circle summary-icon-skeleton"></div>
+                <div class="summary-text-skeleton">
+                    <div class="skeleton skeleton-title skeleton-width-50"></div>
+                    <div class="skeleton skeleton-text skeleton-width-80"></div>
+                </div>
+            </div>
+            <div class="summary-card summary-card-skeleton">
+                <div class="skeleton skeleton-circle summary-icon-skeleton"></div>
+                <div class="summary-text-skeleton">
+                    <div class="skeleton skeleton-title skeleton-width-50"></div>
+                    <div class="skeleton skeleton-text skeleton-width-80"></div>
+                </div>
+            </div>
+            <div class="summary-card summary-card-skeleton">
+                <div class="skeleton skeleton-circle summary-icon-skeleton"></div>
+                <div class="summary-text-skeleton">
+                    <div class="skeleton skeleton-title skeleton-width-50"></div>
+                    <div class="skeleton skeleton-text skeleton-width-80"></div>
+                </div>
+            </div>
+            <div class="summary-card summary-card-skeleton">
+                <div class="skeleton skeleton-circle summary-icon-skeleton"></div>
+                <div class="summary-text-skeleton">
+                    <div class="skeleton skeleton-title skeleton-width-50"></div>
+                    <div class="skeleton skeleton-text skeleton-width-80"></div>
+                </div>
+            </div>
+            <div class="summary-card summary-card-skeleton">
+                <div class="skeleton skeleton-circle summary-icon-skeleton"></div>
+                <div class="summary-text-skeleton">
+                    <div class="skeleton skeleton-title skeleton-width-50"></div>
+                    <div class="skeleton skeleton-text skeleton-width-80"></div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="listing-summary-grid reveal"
+            id="listing-summary"
+            aria-label="สรุปรายการประกาศขาย"
+        >
+            <button
+                type="button"
+                class="summary-card"
+                data-summary-status=""
+            >
+                <span class="summary-icon summary-total">
+                    <i class="bi bi-grid"></i>
+                </span>
+                <div>
+                    <strong id="summary-total-count">0</strong>
+                    <span>ประกาศทั้งหมด</span>
+                </div>
+            </button>
+
+            <button
+                type="button"
+                class="summary-card"
+                data-summary-status="available"
+            >
+                <span class="summary-icon summary-available">
+                    <i class="bi bi-megaphone"></i>
+                </span>
+                <div>
+                    <strong id="summary-available-count">0</strong>
+                    <span>กำลังขาย</span>
+                </div>
+            </button>
+
+            <button
+                type="button"
+                class="summary-card"
+                data-summary-status="pending_payment"
+            >
+                <span class="summary-icon summary-pending">
+                    <i class="bi bi-hourglass-split"></i>
+                </span>
+                <div>
+                    <strong id="summary-pending-count">0</strong>
+                    <span>รอชำระเงิน</span>
+                </div>
+            </button>
+
+            <button
+                type="button"
+                class="summary-card"
+                data-summary-status="sold"
+            >
+                <span class="summary-icon summary-sold">
+                    <i class="bi bi-check2-circle"></i>
+                </span>
+                <div>
+                    <strong id="summary-sold-count">0</strong>
+                    <span>ขายแล้ว</span>
+                </div>
+            </button>
+
+            <button
+                type="button"
+                class="summary-card"
+                data-summary-status="inactive"
+            >
+                <span class="summary-icon summary-inactive">
+                    <i class="bi bi-pause-circle"></i>
+                </span>
+                <div>
+                    <strong id="summary-inactive-count">0</strong>
+                    <span>ปิดประกาศ</span>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- =========================
+             Search / Filter / Sort
+        ========================== -->
+        <section class="owner-filter-section reveal" id="filter-section">
+            <div class="filter-card">
+                <div class="search-input-group">
+                    <i class="bi bi-search"></i>
+                    <input
+                        type="search"
+                        id="listing-search-input"
+                        placeholder="ค้นหาจากชื่อไก่"
+                    >
+                </div>
+
+                <select id="breed-filter" aria-label="กรองสายพันธุ์">
+                    <option value="">ทุกสายพันธุ์</option>
+                    <option value="พม่า">พม่า</option>
+                    <option value="ไทย">ไทย</option>
+                    <option value="ญี่ปุ่น">ญี่ปุ่น</option>
+                    <option value="ไซง่อน">ไซง่อน</option>
+                </select>
+
+                <select id="status-filter" aria-label="กรองสถานะประกาศ">
+                    <option value="">ทุกสถานะ</option>
+                    <option value="available">กำลังขาย</option>
+                    <option value="pending_payment">รอชำระเงิน</option>
+                    <option value="sold">ขายแล้ว</option>
+                    <option value="inactive">ปิดประกาศ</option>
+                </select>
+
+                <select id="price-filter" aria-label="กรองช่วงราคา">
+                    <option value="">ทุกช่วงราคา</option>
+                    <option value="low">ต่ำกว่า 5,000 บาท</option>
+                    <option value="mid">5,000-10,000 บาท</option>
+                    <option value="high">มากกว่า 10,000 บาท</option>
+                </select>
+
+                <select id="sort-filter" aria-label="เรียงรายการ">
+                    <option value="latest">ล่าสุด</option>
+                    <option value="price-low">ราคาต่ำไปสูง</option>
+                    <option value="price-high">ราคาสูงไปต่ำ</option>
+                </select>
+
+                <button type="button" id="search-btn">
+                    <i class="bi bi-search"></i>
+                    ค้นหา
+                </button>
+            </div>
+        </section>
+
+        <!-- =========================
+             รายการประกาศขายของเจ้าของร้าน
+        ========================== -->
+        <section class="owner-listing-section" id="owner-listing-section">
+            <div class="section-header">
+                <div>
+                    <h2>รายการประกาศขาย</h2>
+                    <p id="result-text">
+                        กำลังโหลดข้อมูล...
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="reset-filter-btn"
+                    id="reset-filter-btn"
+                >
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                    ล้างตัวกรอง
+                </button>
+            </div>
+
+            <div class="owner-listing-grid owner-listing-skeleton-grid" id="owner-listing-loading" aria-hidden="true" hidden>
+                <article class="owner-listing-card owner-listing-card-skeleton">
+                    <div class="skeleton listing-image-panel"></div>
+                    <div class="listing-content listing-content-skeleton">
+                        <div class="skeleton skeleton-title skeleton-width-50"></div>
+                        <div class="skeleton skeleton-text skeleton-width-70"></div>
+                        <div class="listing-meta-skeleton-row">
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                        <div class="skeleton skeleton-button skeleton-width-40"></div>
+                    </div>
+                </article>
+                <article class="owner-listing-card owner-listing-card-skeleton">
+                    <div class="skeleton listing-image-panel"></div>
+                    <div class="listing-content listing-content-skeleton">
+                        <div class="skeleton skeleton-title skeleton-width-50"></div>
+                        <div class="skeleton skeleton-text skeleton-width-70"></div>
+                        <div class="listing-meta-skeleton-row">
+                            <div class="skeleton skeleton-text"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                        <div class="skeleton skeleton-button skeleton-width-40"></div>
+                    </div>
+                </article>
+            </div>
+
+            <div
+                class="owner-listing-grid"
+                id="owner-listing-container"
+                aria-busy="false"
+            ></div>
+
+            <div
+                class="empty-listing-state"
+                id="empty-listing-state"
+                hidden
+            >
+                <div class="empty-icon">
+                    <i class="bi bi-tags"></i>
+                </div>
+
+                <h3 id="empty-title">
+                    คุณยังไม่มีรายการประกาศขาย
+                </h3>
+
+                <p id="empty-description">
+                    เริ่มลงขายไก่ชนตัวแรกของคุณได้เลย
+                </p>
+
+                <a
+                    href="create-listing.html"
+                    class="empty-create-btn"
+                    id="empty-create-btn"
+                >
+                    <i class="bi bi-plus-lg"></i>
+                    ลงขายไก่
+                </a>
+
+                <button
+                    type="button"
+                    class="empty-reset-btn"
+                    id="empty-reset-btn"
+                    hidden
+                >
+                    ล้างตัวกรอง
+                </button>
+            </div>
+
+            <div class="ui-error-state owner-market-error-state" id="owner-listing-error" hidden>
+                <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+                <h3>ไม่สามารถโหลดรายการประกาศขายได้</h3>
+                <p>กรุณาตรวจสอบการเชื่อมต่อแล้วลองใหม่อีกครั้ง</p>
+                <button type="button" class="reset-filter-btn ui-pressable" id="owner-listing-retry-btn">
+                    ลองใหม่
+                </button>
+            </div>
+
+            <nav
+                class="pagination"
+                id="pagination"
+                aria-label="เปลี่ยนหน้ารายการประกาศขาย"
+            >
+                <button
+                    type="button"
+                    class="pagination-nav"
+                    id="previous-page"
+                >
+                    <i class="bi bi-chevron-left"></i>
+                    ก่อนหน้า
+                </button>
+
+                <div
+                    class="pagination-pages"
+                    id="pagination-pages"
+                ></div>
+
+                <button
+                    type="button"
+                    class="pagination-nav"
+                    id="next-page"
+                >
+                    ถัดไป
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div>
+                <strong>SUPER KAICHON</strong>
+                <p>ระบบกลางจัดการข้อมูลฟาร์มและตลาดไก่ชนออนไลน์</p>
+            </div>
+
+            <p>© 2026 Super Kaichon</p>
+        </div>
+    </footer>
+
+<script src="../../shared/api/api-config.js"></script>
+<script src="../../shared/api/auth-storage.js"></script>
+<script src="../../shared/api/api-client.js"></script>
+<script src="../../shared/js/ui-state.js"></script>
+<script src="../shared/services/marketplace-api.js"></script>
+<script src="../shared/services/cart-api.js"></script>
+<script src="../shared/js/marketplace-shared.js"></script>
+<script src="../shared/data/self-market-demo-data.js"></script>
+<script src="./self-market.js"></script>
+</body>
+</html>
